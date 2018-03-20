@@ -5,9 +5,9 @@ import com.loginApp.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -15,24 +15,29 @@ public class LoginController {
 	
 	@Autowired
 	LoginService loginService;
-	
+	@Autowired
+	User user;
 	
 	
 	@RequestMapping("/")
-	public String homePage(){
+	public String homePage(ModelMap model){
+		
 		return "loginPage";
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(@ModelAttribute("SpringWeb") User user, ModelMap model){
-	
-		user.setName(model.addAttribute("name",user.getName()).toString());
-		user.setPassword(model.addAttribute("password", user.getPassword()).toString());
-		System.out.println(user.getName());
-		if(loginService.login(user))
+	public String login(@RequestParam String username,@RequestParam String password, ModelMap model){
+		System.out.println(username+" "+password);
+		user.setName(username);
+		user.setPassword(password);
+		if(loginService.login(user)) {
+			model.addAttribute("name", username);
 			return "home";
-		else			
+		}else {
+			
+			model.addAttribute("invalidCredentials", "Invalid credentials");
 			return "loginPage";
+		}
 		
 	}
 
