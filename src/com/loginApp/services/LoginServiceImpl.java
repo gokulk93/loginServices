@@ -12,7 +12,7 @@ public class LoginServiceImpl implements LoginService{
 	
 	@Override
 	public boolean login(User user) {
-		System.out.println(user.getName());
+		
 		return loginDb.validateUsers(user);
 	}
 

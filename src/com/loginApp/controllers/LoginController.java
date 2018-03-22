@@ -20,21 +20,19 @@ public class LoginController {
 	
 	
 	@RequestMapping("/")
-	public String homePage(ModelMap model){
-		
+	public String homePage(){	
 		return "loginPage";
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(@RequestParam String username,@RequestParam String password, ModelMap model){
-		System.out.println(username+" "+password);
+		
 		user.setName(username);
 		user.setPassword(password);
 		if(loginService.login(user)) {
 			model.addAttribute("name", username);
 			return "home";
 		}else {
-			
 			model.addAttribute("invalidCredentials", "Invalid credentials");
 			return "loginPage";
 		}
