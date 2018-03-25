@@ -10,21 +10,22 @@
 <link rel="shortcut icon" href="${favicon}" />
 </head>
 <body>
-	<form action="addDetails" method="POST" name="loginForm" >
+	<form action="addDetails" method="POST" name="userForm" modelAttribute="userForm" >
+		<h3 style="color:maroon;">${userStatus}</h3> 
 		<label>UserId</label><br/>
 	    <input type="text" name="userId" placeholder="userId" required>
 	    <br/>
 		<label>Username</label><br/>
-	    <input type="text" name="username" placeholder="username" required>
+	    <input type="text" name="userName" placeholder="userName" required>
 	    <br/>
 	    <label>Password</label><br/>
 	    <input type="password" name="password" placeholder="password" required>
 	    <br/>
 	    <label>Re-Type Password</label><br/>
-	    <input type="password" name="password" placeholder="password" required>
+	    <input type="verifiedPassword" name="verifiedPassword" placeholder="retype password" required>
 	    <br/>
 	    
 	    <input type="submit" value="Submit"></input>
-	</form>
+	</form> 
 </body>
 </html>

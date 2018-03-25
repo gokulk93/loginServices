@@ -23,15 +23,15 @@
 </head>
 <body ng-app="loginApp">
 	<form action="login" method="POST" name="loginForm"> 
-	
+		<h3 style="color:maroon;">${userStatus}</h3> 
 		<label>Username</label><br/>
 	    <input type="text" name="username" placeholder="username" required>
 	    <br/>
 	    <label>Password</label><br/>
 	    <input type="password" name="password" placeholder="password" required>
 	    <br/>
-	    <h3 style="color:maroon;">${invalidCredentials}</h3> 
 	    
+	    <label>New User? <a href="register">click here</a></label><br/>
 	    <input type="submit" value="Submit"></input>
     </form> 
 </body>
