@@ -5,6 +5,7 @@ import com.loginApp.beans.User;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -28,11 +29,18 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int addUser(User user) {
-		int result= jdbcTemplate.update(addUser,new Object[]{user.getUserId(),
-				user.getUserName(),
-				User.getAccess(), 
-				user.getPassword()});
-        return result;
+	public int addUser(User user) throws DataAccessException{
+		try {
+			System.out.println("DAO");
+			int result= jdbcTemplate.update(addUser,new Object[]{user.getUserId(),
+					user.getUserName(),
+					User.getAccess(), 
+					user.getPassword()});
+	        return result;
+		}catch(DataAccessException e) {
+			System.out.println(e.toString());
+			throw e;
+		}
+		
 	}
 }

@@ -1,5 +1,7 @@
 package com.loginApp.services;
 
+import java.sql.SQLException;
+
 import com.loginApp.beans.User;
 
 public interface UserService {

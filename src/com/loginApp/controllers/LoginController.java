@@ -6,6 +6,7 @@ import com.loginApp.services.UserService;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -49,7 +50,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/addDetails", method=RequestMethod.POST)
-	public String addUsers(@ModelAttribute User userForm, ModelMap model){
+	public String addUsers(@ModelAttribute User userForm, ModelMap model) throws SQLException{
 		
 		if(userService.addUsers(userForm)) {
 			model.addAttribute("userStatus", "New user succesfully added. Continue your login");
@@ -60,7 +61,7 @@ public class LoginController {
 		}
 		
 	}
-	@ExceptionHandler(SQLException.class)
+	@ExceptionHandler(DataAccessException.class)
 	public String errorPage(ModelMap model) {
 		model.addAttribute("status", "SQL exception occured.Please contact administrator");
 		return "errorPage";
