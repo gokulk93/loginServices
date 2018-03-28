@@ -1,1 +1,3 @@
-angular.module('loginApp', ['ngMessages']);
+'use strict';
+ var app = angular.module('loginApp',[]);
+

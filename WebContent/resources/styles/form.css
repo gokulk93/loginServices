@@ -18,9 +18,10 @@ input {
   border-radius: 5px;
 }
 
-p {
+.error {
   color: red;
   font-weight: bold;
-  padding: 0;
-  margin: 5px 0;
+}
+input.ng-invalid {
+    
 }

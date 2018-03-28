@@ -50,9 +50,9 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/addDetails", method=RequestMethod.POST)
-	public String addUsers(@ModelAttribute User userForm, ModelMap model) throws SQLException{
+	public String addUsers(@ModelAttribute User registrationForm, ModelMap model) throws SQLException{
 		
-		if(userService.addUsers(userForm)) {
+		if(userService.addUsers(registrationForm)) {
 			model.addAttribute("userStatus", "New user succesfully added. Continue your login");
 			return "loginPage";
 		}else {

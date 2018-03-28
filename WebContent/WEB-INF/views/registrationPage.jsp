@@ -6,24 +6,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration</title>
-<spring:url value="/resources/images/favicon.png" var="favicon" />
-<link rel="shortcut icon" href="${favicon}" />
+<%@ include file = "header.html" %>
 </head>
-<body>
-	<form action="addDetails" method="POST" name="userForm" modelAttribute="userForm" >
+<body ng-app="loginApp">
+	<form ng-controller="registrationController as registrationCtrl" 
+		action="addDetails" 			method="POST" 
+		name="registrationForm" 		modelAttribute="registrationForm" >
+		
 		<h3 style="color:maroon;">${userStatus}</h3> 
-		<label>UserId</label><br/>
-	    <input type="text" name="userId" placeholder="userId" required>
-	    <br/>
-		<label>Username</label><br/>
-	    <input type="text" name="userName" placeholder="userName" required>
-	    <br/>
-	    <label>Password</label><br/>
-	    <input type="password" name="password" placeholder="password" required>
-	    <br/>
-	    <label>Re-Type Password</label><br/>
-	    <input type="verifiedPassword" name="verifiedPassword" placeholder="retype password" required>
-	    <br/>
+		
+		<div>
+	    	<input type="number"	name="userId"			placeholder="UserId"
+	    		ng-model="userId"	ng-required="true"		ng-minlength="4"		ng-maxlength="6">
+	    	<span class="error" ng-show="registrationForm.userId.$invalid && registrationForm.userId.$touched">User id should be between 4 to 6 digit length</span>
+	    </div>
+	    
+		<div>
+	    	<input type="text"			name="userName"		placeholder="UserName"	
+	    		ng-model="userName"		ng-required="true">
+	    	<span class="error" ng-show="registrationForm.userName.$invalid && registrationForm.userName.$touched" ng-show="registrationForm.userName.$invalid">Enter your name </span>
+	    </div>
+	    
+	    <div>
+	    	<input type="password"		name="password"			placeholder="Password" 
+	    		ng-model="password"		ng-required="true"		ng-minlength="8"		ng-maxlength="16">
+	    	<span class="error" ng-show="registrationForm.password.$invalid && registrationForm.password.$touched">Password should be 8 to 16 characters</span>
+	    </div>
+	    
+	    <div>
+	    	<input type="password"		name="vPassword"		placeholder="Retype password"	
+	    		ng-model="vpassword" 	ng-match="password">
+	    	<span class="error" ng-show="registrationForm.vPassword.$error.match">Password doesn't match</span>
+	    </div>
 	    
 	    <input type="submit" value="Submit"></input>
 	</form> 
