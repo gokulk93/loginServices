@@ -37,11 +37,12 @@ public class LoginController {
 	
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(@RequestParam String username,@RequestParam String password, ModelMap model){
-		user.setUserName(username);
+	public String login(@RequestParam int userId,@RequestParam String password, ModelMap model){
+		user.setUserId(userId);
 		user.setPassword(password);		
 		if(userService.login(user)) {
-			model.addAttribute("name", username);
+			
+			model.addAttribute("name", userService.getUserId(userId));
 			return "home";
 		}else {
 			model.addAttribute("userStatus", "Invalid credentials");
@@ -51,10 +52,13 @@ public class LoginController {
 	
 	@RequestMapping(value="/addDetails", method=RequestMethod.POST)
 	public String addUsers(@ModelAttribute User registrationForm, ModelMap model) throws SQLException{
-		
-		if(userService.addUsers(registrationForm)) {
+		String result = userService.addUsers(registrationForm);
+		if(result.equalsIgnoreCase("successfull")) {
 			model.addAttribute("userStatus", "New user succesfully added. Continue your login");
 			return "loginPage";
+		}else if(result.equalsIgnoreCase("existing user")) {
+			model.addAttribute("userStatus", "User already exists");
+			return "registrationPage";
 		}else {
 			model.addAttribute("userStatus", "Registration fails. Try after some time");
 			return "registrationPage";

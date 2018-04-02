@@ -20,15 +20,16 @@
 		<h3 style="color:maroon;">${userStatus}</h3> 
 		<p>{{ctrl.message}}</p>
 		<label>Username</label><br/>
-	    <input type="text" name="username" ng-model="ctrl.username"		placeholder="username" required>
+	    <input type="number"	name="userId"			placeholder="UserId"
+	    		ng-model="ctrl.userId"	ng-required="true"		ng-minlength="4"		ng-maxlength="6">
 	    <br/>
 	    <label>Password</label><br/>
-	    <input type="password" name="password"		ng-model="ctrl.password"		placeholder="password" required>
+	    <input type="password"		name="password"			placeholder="Password" 
+	    		ng-model="ctrl.password"		ng-required="true"		ng-minlength="8"		ng-maxlength="16">
 	    <br/>
 	    
 	    <label>New User? <a href="register">click here</a></label><br/>
 	    <input type="submit" value="Login"/>
-<!-- 	    <button ng-click="checkLogin()">Login</button> -->
     </form> 
 </body>
 </html>

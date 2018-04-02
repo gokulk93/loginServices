@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import com.loginApp.beans.User;
 
 public interface UserDAO {
-	public int validateUsers(User user);
+	public boolean validateUsers(User user);
 	public int addUser(User user);
+	public User getUserById(int userId);
 }
