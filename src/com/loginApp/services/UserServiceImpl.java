@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService{
 	public boolean login(User user) {
 		boolean result= userDb.validateUsers(user);
 		
-		if(result) {
+		if(result) { 
 			return true;
 		}else {
 			return false;

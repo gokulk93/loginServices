@@ -11,7 +11,7 @@
 <body ng-app="loginApp">
 	<form ng-controller="registrationController as registrationCtrl" 
 		action="addDetails" 			method="POST" 
-		name="registrationForm" 		modelAttribute="registrationForm" >
+		name="registrationForm" 		modelAttribute="registrationForm" novalidate >
 		
 		<h3 style="color:maroon;">${userStatus}</h3> 
 		
@@ -28,18 +28,44 @@
 	    </div>
 	    
 	    <div>
-	    	<input type="password"		name="password"			placeholder="Password" 
-	    		ng-model="password"		ng-required="true"		ng-minlength="8"		ng-maxlength="16">
+	    	<input type="password"		name="password1"			placeholder="Password" 
+	    		ng-model="password1"		ng-required="true"		ng-minlength="8"		ng-maxlength="16">
 	    	<span class="error" ng-show="registrationForm.password.$invalid && registrationForm.password.$touched">Password should be 8 to 16 characters</span>
 	    </div>
 	    
 	    <div>
-	    	<input type="password"		name="vPassword"		placeholder="Retype password"	
-	    		ng-model="vpassword" 	ng-match="password">
-	    	<span class="error" ng-show="registrationForm.vPassword.$error.match">Password doesn't match</span>
+	    	<input type="password"		name="passwordConfirmation"		placeholder="Confirm password"	
+	    		ng-model="passwordConfirmation" 	ng-required="true" password-match="password">
+	    		<input type="password" 
+     ng-model="password2"
+      />
+	    	<span class="error" ng-show="registrationForm.passwordConfirmation.$error.match">Password do not match</span>
 	    </div>
 	    
-	    <input type="submit" value="Submit"></input>
+	    <input type="submit" value="Submit" ng-disabled="registrationForm.$invalid"></input>
+	    
+	 <input placeholder="Password"
+           name="pwd" ng-model="thePwd" ng-model-options="{ updateOn: 'blur' }"
+           required type="password" pattern=".{2,}" />
+    <div class="error-message"
+         ng-show="form.password.$invalid && !form.password.$pristine">
+        Passwords must have at least 2 chars.
+    </div>
+
+    <input placeholder="Check Password"
+           name="check" ng-model="chkPwd"
+           type="password" wj-valid="chkPwd == thePwd" />
+    <div class="error-message"
+         ng-show="form.check.$invalid && !form.check.$pristine">
+        Sorry, the passwords don't match.
+    </div>
+    <button type="submit"
+            ng-disabled="form.$invalid">
+        Create Account
+    </button>
+    
+    
 	</form> 
+</div>  
 </body>
 </html>

@@ -1,35 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login Page</title>
-
-
-
-<%@ include file = "header.html" %>
-
-</head>
-<body ng-app="loginApp">
-	<form action="login" method="post" name="loginForm" ng-controller="loginCtroller as ctrl"> 
-		<h3 style="color:maroon;">${userStatus}</h3> 
-		<p>{{ctrl.message}}</p>
-		<label>Username</label><br/>
-	    <input type="number"	name="userId"			placeholder="UserId"
-	    		ng-model="ctrl.userId"	ng-required="true"		ng-minlength="4"		ng-maxlength="6">
-	    <br/>
-	    <label>Password</label><br/>
-	    <input type="password"		name="password"			placeholder="Password" 
-	    		ng-model="ctrl.password"		ng-required="true"		ng-minlength="8"		ng-maxlength="16">
-	    <br/>
-	    
-	    <label>New User? <a href="register">click here</a></label><br/>
-	    <input type="submit" value="Login"/>
-    </form> 
-</body>
-</html>
+<div class="col-md-12">
+      <p><strong>Login Page</strong></p>
+      
+      <form ng-submit="formSubmit()" class="form">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="username" placeholder="username" required=""/>
+          </div> 
+ 
+          <div class="form-group">
+            <input type="password" class="form-control" ng-model="password" placeholder="password" required=""/>
+          </div>
+ 
+          <div class="form-group">
+            <button type="submit" class="btn btn-success">Login</button>
+            <span class="text-danger" style="color:red">{{ error }}</span>
+          </div>
+ 
+        </div>
+      </form>
+</div>

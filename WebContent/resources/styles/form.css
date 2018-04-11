@@ -25,3 +25,8 @@ input {
 input.ng-invalid {
     
 }
+
+input:invalid {
+    border: 1px solid red;
+}
+

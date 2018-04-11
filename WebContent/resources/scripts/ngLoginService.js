@@ -1,17 +1,18 @@
-app.service('loginService',['$http','$log', function($http,$log){
-	$log.log("Initializing factory...");
-	
-	this.validateUser = function(userName, password, result){
-		
-		$http({
-			url:'http://localhost:8080/LoginService/login?username='+userName+'&password='+password,
-			method:'POST'
-		}).then(function(response){
-			result(response.data);
-		},function(response){
-			$log.log(response);
-		});
-		
-	};
-	
-}]);
+//var app = angular.module('loginApp');
+  
+  app.factory('LoginService', function() {
+    var admin = 'test';
+    var pass = 'test';
+    var isAuthenticated = false;
+    
+    return {
+      login : function(username, password) {
+        isAuthenticated = username === admin && password === pass;
+        return isAuthenticated;
+      },
+      isAuthenticated : function() {
+        return isAuthenticated;
+      }
+    };
+    
+  });

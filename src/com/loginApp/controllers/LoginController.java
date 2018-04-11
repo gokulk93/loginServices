@@ -25,15 +25,25 @@ public class LoginController {
 	User user;
 	
 	
-	@RequestMapping("/")
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String indexPage(){
+		return "index";
+	}
+	
+	@RequestMapping(value="/register", method=RequestMethod.GET)
+	public String registrationPage(){
+		return "registrationPage";
+	}
+	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String loginPage(){
 		return "loginPage";
 	}
 	
-	@RequestMapping("/register")
-	public String registration(){
-		return "registrationPage";
+	@RequestMapping(value="/home", method=RequestMethod.GET)
+	public String homePage(){
+		return "home";
 	}
+	
 	
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)

@@ -1,5 +1,3 @@
-
-
 <!-- Spring URL Mappings -->
 <spring:url value="/resources/images/favicon.png" var="favicon" />
 <spring:url value="resources/styles/form.css" var="formStyles" />
@@ -13,31 +11,17 @@
 
 
 <!-- Style sheets -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="${formStyles}">
 
 
-<!-- AngularJs, Bootstrap & Jquery libraries-->
+
+<!-- AngularJs libraries -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
- 
 
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
 
 <!-- Custom java scripts -->
-<!-- <script>document.write('<base href="' + document.location + '" />');</script> -->
 <script src="${angularApp}"></script>
 <script src="${angularCtrl}"></script>
 <script src="${angularService}"></script>
 
-
-
-	
-	
-	
-	
-	
