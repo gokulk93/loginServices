@@ -9,7 +9,7 @@
 <%@ include file = "header.html" %>
 </head>
 <body ng-app="loginApp">
-	<form ng-controller="registrationController as registrationCtrl" 
+	<form 
 		action="addDetails" 			method="POST" 
 		name="registrationForm" 		modelAttribute="registrationForm" novalidate >
 		

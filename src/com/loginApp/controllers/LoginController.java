@@ -11,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -47,16 +49,17 @@ public class LoginController {
 	
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(@RequestParam int userId,@RequestParam String password, ModelMap model){
+	public @ResponseBody String login( @RequestParam int userId,@RequestParam String password, ModelMap model){
 		user.setUserId(userId);
 		user.setPassword(password);		
+		System.out.println("In Conroller");
 		if(userService.login(user)) {
 			
-			model.addAttribute("name", userService.getUserId(userId));
-			return "home";
+			//model.addAttribute("name", userService.getUserId(userId));
+			return "true";
 		}else {
-			model.addAttribute("userStatus", "Invalid credentials");
-			return "loginPage";
+			//model.addAttribute("userStatus", "Invalid credentials");
+			return "false";
 		}
 	}
 	

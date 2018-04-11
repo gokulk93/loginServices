@@ -8,7 +8,7 @@ app.controller('LoginController', function($scope, $rootScope, $stateParams, $st
     if(LoginService.login($scope.username, $scope.password)) {
       $rootScope.userName = $scope.username;
       $scope.error = '';
-      $scope.username = 'test';
+      $scope.username = '';
       $scope.password = '';
       $state.transitionTo('home');
     } else {
@@ -21,5 +21,11 @@ app.controller('LoginController', function($scope, $rootScope, $stateParams, $st
 app.controller('HomeController', 
 		  function($scope, $rootScope, $stateParams, $state, LoginService) {
 		    $scope.user = $rootScope.userName;
+		    
+		  });
+
+app.controller('RegistrationController', 
+		  function($scope, $rootScope, $stateParams, $state, LoginService) {
+		    
 		    
 		  });
