@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -48,19 +49,20 @@ public class LoginController {
 	
 	
 	
-	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public @ResponseBody String login( @RequestParam int userId,@RequestParam String password, ModelMap model){
-		user.setUserId(userId);
-		user.setPassword(password);		
-		System.out.println("In Conroller");
-		if(userService.login(user)) {
+	@RequestMapping(value="/login",  method=RequestMethod.POST)
+	public @ResponseBody String login(  User userParam){
+		
+		/*user.setPassword(password);	*/	
+		System.out.println(userParam.getPassword());
+		return "true";
+		/*if(userService.login(user)) {
 			
 			//model.addAttribute("name", userService.getUserId(userId));
 			return "true";
 		}else {
 			//model.addAttribute("userStatus", "Invalid credentials");
 			return "false";
-		}
+		}*/
 	}
 	
 	@RequestMapping(value="/addDetails", method=RequestMethod.POST)

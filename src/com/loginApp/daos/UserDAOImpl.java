@@ -20,7 +20,7 @@ public class UserDAOImpl implements UserDAO {
 	@Autowired
 	User user;
 	private final String addUser = "INSERT INTO users (user_id, user_name, access,password) VALUES (?, ?, ?, ?)";
-	private final String validateUser = "select count(*) from users where user_id = ? and BINARY password = ?";
+	private final String validateUser = "select count(*) from users where user_name = ? and BINARY password = ?";
 	private final String getUser = "select * from users where user_id = ?";
 	
 	public JdbcTemplate getJdbcTemplate() {
@@ -30,7 +30,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean validateUsers(User user){
 		
-        String result= jdbcTemplate.queryForObject(validateUser,new Object[]{user.getUserId(),user.getPassword()},String.class); 
+        String result= jdbcTemplate.queryForObject(validateUser,new Object[]{user.getUserName(),user.getPassword()},String.class); 
         boolean booleanValue=Integer.parseInt(result)==1;
         return booleanValue;
 	}

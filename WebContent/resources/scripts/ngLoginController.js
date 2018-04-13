@@ -5,11 +5,11 @@ app.controller('LoginController', function($scope, $rootScope, $stateParams, $st
   $rootScope.title = "AngularJS Login Sample";
   
   $scope.formSubmit = function() {
-    if(LoginService.login($scope.username, $scope.password)) {
-      $rootScope.userName = $scope.username;
+    if(LoginService.login($scope.user)) {
+      $rootScope.userName = $scope.user.userName;
       $scope.error = '';
-      $scope.username = '';
-      $scope.password = '';
+      $scope.user.name = '';
+      $scope.user.password = '';
       $state.transitionTo('home');
     } else {
       $scope.error = "Incorrect username/password !";
