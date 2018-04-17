@@ -9,15 +9,9 @@
 <html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login Page</title>
+<title>Login Services</title>
 
 <%@ include file = "header.html" %>
-<!-- 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
-
-<script src="resources/scripts/app.js"></script> -->
-
 
 </head>
 <body ng-app="loginApp">
@@ -25,6 +19,7 @@
 		<h2>Login Services</h2>
 		
 		<div ui-view></div>
+		
 	</div>
 </body>
 </html>

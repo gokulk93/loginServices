@@ -9,7 +9,7 @@
 
     <!-- <import resource="classpath:resources*" /> -->
 	<mvc:annotation-driven />
-    <context:component-scan base-package="com.loginApp" />
+    <context:component-scan base-package="com.loginApp.*" />
     <!-- property files -->
 	<context:property-placeholder location="classpath:configuration.properties"/>
     
@@ -28,5 +28,6 @@
 	<beans:bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <beans:constructor-arg type="javax.sql.DataSource" ref="dataSource"/>
     </beans:bean>
+    
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 </beans:beans>
